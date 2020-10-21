@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		* {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+	</style>
+	<title>Input User</title>
+</head>
+<body>
+	<h1>XI RPL 5/27</h1>
+	<h2>Pendaftaran hiGirls!</h2>
+	<div>
+		<form>
+			<table>
+				<tr>
+					<td><label for="nama">Nama Lengkap</label></td>
+					<td>:</td>
+					<td><input type="text" id="name" placeholder="Masukan Nama"></td>
+				</tr>
+				<tr>
+					<td><label for="email">Email</label></td>
+					<td>:</td>
+					<td><input type="email" id="email" placeholder="Masukan Email"></td>
+				</tr>
+				<tr>
+					<td><label>Negara</label></td>
+					<td>:</td>
+					<td><input type="text" id="negaraa" list="negara">
+					<datalist id="negara">
+						<option value="Indonesia">
+						<option value="Malaysia">
+						<option value="Singapura">
+						<option value="Timor Leste">
+						<option value="Filipina">
+						<option value="Thailand">
+						<option value="Kamboja">
+						<option value="Myanmar">
+						<option value="Vietnam">
+						<option value="Brunei">
+						<option value="Laos">
+					</datalist></td>
+				</tr>
+				<tr>
+					<td><label for="tahun">Tahun Lahir</label></td>
+					<td>:</td>
+					<td><input type="number" min="1980" max="2020" id="tahun"/></td>
+				</tr>
+				<tr>
+					<td><label>Jenis Kelamin</label></td>
+					<td>:</td>
+					<td>
+						<input type="radio" id="gender" name="gender" value="Pria">Pria<br>
+						<input type="radio" id="gender" name="gender" value="Wanita">Wanita<br>
+						<input type="radio" id="gender" name="gender" value="Tidak Terdefinisi">Tidak Terdefinisi
+					</td>
+				</tr>
+				<tr>
+					<td><button type="button" onclick="myFunction()">Daftar</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="tampilan">
+		
+	</div>
+	<script>
+		function myFunction() {
+		  var nama = document.getElementById('name');
+	      var email = document.getElementById('email');
+	      var negara = document.getElementById('negaraa', 'negara');
+	      var umur = document.getElementById('tahun');
+	      var gender = document.getElementsByName('gender');
+
+	      var opsinama = nama.value;
+	      var opsiemail = email.value;
+	      var opsinegara = negara.value;
+	      var opsiumur = tahun.value;
+	      var realumur = 2020-tahun.value;
+	      var opsigender = '';
+	      for (var i = 0; i < gender.length; i++) {
+	        if(gender[i].checked == true){
+	          opsigender = gender[i].value;
+	          break;
+	        }
+	      }
+	      let nampilin = document.getElementById('tampilan');
+	      let ketampil = '';
+	      if( opsinama == '' ||
+	        opsiemail == '' ||
+	        opsinegara == '' ||
+	        opsiumur == '' ||
+	        opsigender == '') {
+	        if(opsinama == '') ketampil += '<b>Kamu Belum Memasukkan Nama!</b><br></p>';
+	        if(opsiemail == '') ketampil += '<p><b>Kamu Belum Mememasukkan E-mail!</b></p>';
+	        if(opsinegara == '') ketampil += '<p><b>Kamu Belum Memilih Negara!</b></p>';
+	        if(opsiumur == '') ketampil += '<p><b>Kamu Belum Memasukkan Tahun Lahir!</b></p>';
+	        if(opsigender == '') ketampil += '<p><b>Kamu Belum Memilih Jenis Kelamin!</b></p>';
+		  }else{
+		    ketampil += `<b><h3>Selamat Datang Di hiGirls!</h3>
+		    <table>
+		      <tr>
+		        <td>Nama Lengkap </td>
+		        <td>:</td>
+		        <td>${opsinama}</td>
+		      </tr>
+		      <tr>
+		        <td>Email </td>
+		        <td>:</td>
+		        <td>${opsiemail}</td>
+		      </tr>
+		      <tr>
+		        <td>Jenis Kelamin </td>
+		        <td>:</td>
+		        <td>${opsigender}</td>
+		      </tr>
+		      <tr>
+		        <td>Negara </td>
+		        <td>:</td>
+		        <td>${opsinegara}</td>
+		      </tr>
+		      <tr>
+		        <td>Umur </td>
+		        <td>:</td>
+		        <td>${realumur}</td>
+		      </tr>
+		    </table>`;
+		  }
+		nampilin.innerHTML = ketampil;
+	}
+	</script>
+</body>
+</html>
